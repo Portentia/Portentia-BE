@@ -41,7 +41,7 @@ dependencies {
     // mysql
     runtimeOnly("com.mysql:mysql-connector-j")
 
-    // open feign
+    // openfeign
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -58,4 +58,10 @@ kotlin {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:2023.0.1")
+    }
 }
