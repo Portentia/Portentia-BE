@@ -32,6 +32,9 @@ dependencies {
     // oauth2 client
     implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
 
+    // redis
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
+
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
