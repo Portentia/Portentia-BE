@@ -3,6 +3,7 @@ plugins {
     kotlin("plugin.spring") version "1.9.25"
     id("org.springframework.boot") version "3.4.6"
     id("io.spring.dependency-management") version "1.1.7"
+    id("org.jetbrains.kotlin.kapt") version "1.5.31"
 }
 
 group = "com"
@@ -43,6 +44,10 @@ dependencies {
 
     // openfeign
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+
+    // mapStruct
+    implementation("org.mapstruct:mapstruct:1.5.5.Final")
+    kapt("org.mapstruct:mapstruct-processor:1.5.5.Final")
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
