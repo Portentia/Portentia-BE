@@ -1,10 +1,10 @@
 plugins {
-    kotlin("jvm") version "1.9.25"
-    kotlin("plugin.spring") version "1.9.25"
-    id("org.springframework.boot") version "3.3.1"
-    id("io.spring.dependency-management") version "1.1.7"
-    id("org.jetbrains.kotlin.kapt") version "1.5.31"
-    id("org.jlleitschuh.gradle.ktlint").version("12.1.0")
+    kotlin("jvm") version PluginVersions.kotlin
+    kotlin("plugin.spring") version PluginVersions.kotlin
+    id("org.springframework.boot") version PluginVersions.springBoot
+    id("io.spring.dependency-management") version PluginVersions.dependencyManagement
+    id("org.jetbrains.kotlin.kapt") version PluginVersions.kapt
+    id("org.jlleitschuh.gradle.ktlint") version PluginVersions.ktlint
 }
 
 group = "com"
@@ -21,42 +21,33 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
+    implementation(Dependencies.springBootStarter)
+    implementation(Dependencies.springBootSecurity)
+    implementation(Dependencies.springBootOAuth2Client)
+    implementation(Dependencies.springBootWeb)
+    implementation(Dependencies.kotlinReflect)
 
-    // Spring Security
-    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation(Dependencies.jjwtApi)
+    runtimeOnly(Dependencies.jjwtImpl)
+    runtimeOnly(Dependencies.jjwtJackson)
 
-    // jwt
-    implementation("io.jsonwebtoken:jjwt-api:0.11.5")
-    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
-    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
+    implementation(Dependencies.springDataRedis)
+    implementation(Dependencies.springBootDataRedis)
 
-    // oauth2 client
-    implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
+    implementation(Dependencies.springBootDataJpa)
 
-    // redis
-    implementation("org.springframework.boot:spring-boot-starter-data-redis")
+    testImplementation(Dependencies.springBootTest)
+    testImplementation(Dependencies.kotlinTestJunit5)
+    testRuntimeOnly(Dependencies.junitPlatformLauncher)
 
-    // spring data jpa
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    runtimeOnly(Dependencies.mysqlConnector)
+    implementation(Dependencies.springCloudOpenFeign)
 
-    // mysql
-    runtimeOnly("com.mysql:mysql-connector-j")
+    implementation(Dependencies.hibernateValidator)
+    implementation(Dependencies.jakartaValidation)
 
-    // openfeign
-    implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
-
-    // mapStruct
-    implementation("org.mapstruct:mapstruct:1.5.5.Final")
-    kapt("org.mapstruct:mapstruct-processor:1.5.5.Final")
-
-    // spring validation
-    implementation("org.springframework.boot:spring-boot-starter-validation")
-
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation(Dependencies.mapstruct)
+    kapt(Dependencies.mapstructProcessor)
 }
 
 kotlin {
