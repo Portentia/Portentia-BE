@@ -2,9 +2,9 @@ package com.portentia.domain
 
 import jakarta.persistence.Column
 import jakarta.persistence.GeneratedValue
-import jakarta.persistence.Id
 import jakarta.persistence.MappedSuperclass
 import org.hibernate.annotations.GenericGenerator
+import org.springframework.data.annotation.Id
 import java.util.*
 
 @MappedSuperclass
