@@ -8,6 +8,8 @@ import org.springframework.boot.runApplication
 @ConfigurationPropertiesScan
 class PortentiaApplication
 
+internal const val  BASE_PACKAGE = "com.portentia"
+
 fun main(args: Array<String>) {
     runApplication<PortentiaApplication>(*args)
 }
